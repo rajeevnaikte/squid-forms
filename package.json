@@ -1,7 +1,7 @@
 {
-  "name": "node-template",
+  "name": "squid-forms",
   "version": "1.0.0",
-  "description": "Template repo for NodeJS projects",
+  "description": "Rule based form inputs update/display/hide",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rajeevnaikte/node-template.git"
+    "url": "git+https://github.com/rajeevnaikte/squid-forms.git"
   },
   "keywords": [
-    "template"
+    "dynamic forms"
   ],
   "author": "Rajeev N",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rajeevnaikte/node-template/issues"
+    "url": "https://github.com/rajeevnaikte/squid-forms/issues"
   },
-  "homepage": "https://github.com/rajeevnaikte/node-template#readme",
+  "homepage": "https://github.com/rajeevnaikte/squid-forms#readme",
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^25.1.2",
