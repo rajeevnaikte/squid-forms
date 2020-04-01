@@ -26,9 +26,14 @@
     "url": "https://github.com/rajeevnaikte/squid-forms/issues"
   },
   "homepage": "https://github.com/rajeevnaikte/squid-forms#readme",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "squid-eval": "^1.0.5",
+    "squid-utils": "^1.0.5"
+  },
   "devDependencies": {
     "@types/jest": "^25.1.2",
+    "@types/lodash": "^4.14.149",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
     "eslint": "^6.8.0",
