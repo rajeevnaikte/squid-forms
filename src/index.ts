@@ -1,6 +1,7 @@
 import RuleEvaluator from 'squid-eval';
 import { ActionFoundError, ActionNotFoundError, InputNotFoundError } from './errors';
-import { getNonNull, getOrCall, getOrSetDefault } from 'squid-utils';
+import { getNonNull, getOrSetDefault } from 'squid-utils';
+import { JsonType } from './types';
 
 /**
  * Holder of action name and corresponding rule.
@@ -58,7 +59,7 @@ export class InputActionRules {
   /**
    * Execute rules with given form-data and find actions for given input.
    */
-  evaluateActions (inputName: string, formData: { [key: string]: any }): string[] {
+  evaluateActions (inputName: string, formData: JsonType): string[] {
     const actionRules = this.inputNameActionRules.get(inputName);
     const actions: string[] = [];
 

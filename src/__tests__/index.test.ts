@@ -40,4 +40,28 @@ describe('InputActionRules', () => {
     const fields = ruleEvaluator.getVariables(actionRules[0].ruleName);
     expect(fields.sort()).toStrictEqual(['phone number', 'country code'].sort());
   });
+
+  test('evaluateActions', () => {
+    const inputName = 'extension2';
+    const action = 'show';
+    const data = {
+      ['country code']: 0,
+      ['phone number']: 2100
+    };
+    inputActionRules.add(inputName, action, '[country code] > 0 and [phone number] > 0');
+
+    let actions = inputActionRules.evaluateActions(inputName, data);
+    expect(actions).toEqual([]);
+
+    data['country code'] = 1;
+    actions = inputActionRules.evaluateActions(inputName, data);
+    expect(actions).toEqual(['show']);
+
+    actions = inputActionRules.evaluateActions('unknown input', data);
+    expect(actions).toEqual([]);
+
+    inputActionRules.add(inputName, 'change', '[phone number] > 2000');
+    actions = inputActionRules.evaluateActions(inputName, data);
+    expect(actions).toEqual(['show', 'change'])
+  });
 });
