@@ -41,7 +41,7 @@ describe('InputActionRules', () => {
     expect(fields.sort()).toStrictEqual(['phone number', 'country code'].sort());
   });
 
-  test('evaluateActions', () => {
+  describe('evaluateActions', () => {
     const inputName = 'extension2';
     const action = 'show';
     const data = {
@@ -50,18 +50,26 @@ describe('InputActionRules', () => {
     };
     inputActionRules.add(inputName, action, '[country code] > 0 and [phone number] > 0');
 
-    let actions = inputActionRules.evaluateActions(inputName, data);
-    expect(actions).toEqual([]);
+    test('no actions', () => {
+      const actions = inputActionRules.evaluateActions(inputName, data);
+      expect(actions).toEqual([]);
+    });
 
-    data['country code'] = 1;
-    actions = inputActionRules.evaluateActions(inputName, data);
-    expect(actions).toEqual(['show']);
+    test('one action', () => {
+      data['country code'] = 1;
+      const actions = inputActionRules.evaluateActions(inputName, data);
+      expect(actions).toEqual(['show']);
+    });
 
-    actions = inputActionRules.evaluateActions('unknown input', data);
-    expect(actions).toEqual([]);
+    test('unknown input name', () => {
+      const actions = inputActionRules.evaluateActions('unknown input', data);
+      expect(actions).toEqual([]);
+    });
 
-    inputActionRules.add(inputName, 'change', '[phone number] > 2000');
-    actions = inputActionRules.evaluateActions(inputName, data);
-    expect(actions).toEqual(['show', 'change'])
+    test('two actions', () => {
+      inputActionRules.add(inputName, 'change', '[phone number] > 2000');
+      const actions = inputActionRules.evaluateActions(inputName, data);
+      expect(actions).toEqual(['show', 'change']);
+    });
   });
 });
